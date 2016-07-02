@@ -1,0 +1,16 @@
+<h1>Map my route!</h1>
+<form method="POST" action="/map">
+  <label for="start">Start</label>
+  <select name="start" id="start">
+    <% @data.each do |station| %>
+      <option><%= [station['name'], station['lat'], station['lng']] %></option>
+    <% end %>
+  </select>
+  <label for="end">End</label>
+  <select name="end" id="end">
+    <% @data.each do |station| %>
+      <option><%= [station['name'], station['lat'], station['lng']] %></option>
+    <% end %>
+  </select>
+  <input type="submit" id="submit_for_route">
+</form>

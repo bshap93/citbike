@@ -1,0 +1,6 @@
+<h1>THE DATA</h1>
+<% @data.each do |location| %>
+  <%= location["name"] %>
+  <%= "#{location["lat"]} " %>
+  <%= location["lng"] %>
+<% end %>
