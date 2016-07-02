@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'bundler'
 require "sinatra/reloader"
+require 'json'
 
 Bundler.require
 
@@ -33,8 +34,10 @@ module Citibike
 
     post '/map' do
       puts params
-      @start = params[:start]
-      @end = params[:end]
+      start_ary = JSON.parse params[:start]
+      end_ary = JSON.parse params[:end]
+      @start = start_ary.map {|num| num.to_f / 1000000.0}
+      @end = end_ary.map {|num| num.to_f / 1000000.0}
       erb :map
     end
 
